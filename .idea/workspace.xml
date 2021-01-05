@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaf16b7c-59ed-421f-927a-1c55eecb7209" name="Default Changelist" comment="" />
+    <list default="true" id="aaf16b7c-59ed-421f-927a-1c55eecb7209" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/models/campground.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/home.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1mdWT3z6I3jx1ApQoWFcpFIsyhw" />
   <component name="ProjectViewState">
@@ -30,10 +63,51 @@
       <option name="presentableId" value="Default" />
       <updated>1609823953455</updated>
       <workItem from="1609823954919" duration="130000" />
+      <workItem from="1609824176001" duration="5000" />
+      <workItem from="1609870186505" duration="1422000" />
+      <workItem from="1609872312064" duration="499000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609870618629">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="424" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609870618629" />
+    <state width="1899" height="305" key="GridCell.Tab.0.bottom" timestamp="1609871789355">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.0.bottom/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609871789355" />
+    <state width="1899" height="305" key="GridCell.Tab.0.center" timestamp="1609871789354">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.0.center/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609871789354" />
+    <state width="1899" height="305" key="GridCell.Tab.0.left" timestamp="1609871789353">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.0.left/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609871789353" />
+    <state width="1899" height="305" key="GridCell.Tab.0.right" timestamp="1609871789354">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.0.right/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609871789354" />
+    <state x="684" y="352" key="jetbrains.nodejs.interpreters-dialog" timestamp="1609870605821">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="684" y="352" key="jetbrains.nodejs.interpreters-dialog/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609870605821" />
   </component>
 </project>
