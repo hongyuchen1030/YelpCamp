@@ -1,0 +1,28 @@
+<!--This form is to edit an exited campground-->
+<!--This will show the detail of a specific campground.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Campground</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Edit an exited campground</h1>
+<form action="/campgrounds/<%= camp._id%>?_method=PUT" method="POST">
+    <div>
+        <label for="title">title</label>
+        <input type="text" id="title" name="campground[title]" value="<%= camp.title%>">
+    </div>
+
+    <div>
+        <label for="location">location</label>
+        <input type="text" id="location" name="campground[location]" value="<%= camp.location%>">
+    </div>
+    <button>Update a Campground</button>
+</form>
+<footer>
+    <a href="/campgrounds">All Campgrounds</a>
+</footer>
+</body>
+</html>

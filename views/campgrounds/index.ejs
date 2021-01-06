@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campgrounds</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>All Camping Site</h1>
+<a href="/campgrounds/new">Create a new Campground</a>
+<p>
+    <%for (let campGround of campGrounds) {%>
+<li>
+    <a href="/campgrounds/<%= campGround._id%>"><%= campGround.title %></a>
+</li>
+    <%}%>
+
+
+</p>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!--This will show the detail of a specific campground.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= camp.title%></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1><%= camp.title%></h1>
+<p>
+    <%= camp.location%>
+</p>
+<p>
+    <a href="/campgrounds/<%= camp._id%>/edit">Edit Campground</a>
+</p>
+<form action="/campgrounds/<%= camp._id%>?_method=DELETE" method="POST">
+    <button>Delete</button>
+</form>
+
+<footer>
+
+    <a href="/campgrounds">All Campgrounds</a>
+</footer>
+</body>
+</html>

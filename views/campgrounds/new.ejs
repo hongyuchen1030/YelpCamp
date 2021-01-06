@@ -1,0 +1,28 @@
+<!--This form is to create a new campground-->
+<!--This will show the detail of a specific campground.-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Campground</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Create a new camp ground</h1>
+<form action="/campgrounds" method="post">
+    <div>
+        <label for="title">title</label>
+        <input type="text" id="title" name="campground[title]">
+    </div>
+
+    <div>
+        <label for="location">location</label>
+        <input type="text" id="location" name="campground[location]">
+    </div>
+    <button>Create a Campground</button>
+</form>
+<footer>
+    <a href="/campgrounds">All Campgrounds</a>
+</footer>
+</body>
+</html>
