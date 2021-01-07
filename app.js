@@ -2,6 +2,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const ejsMate = require('ejs-mate');
 const Campground = require('./models/campground');
 const methodOverride = require('method-override');
 
@@ -11,6 +12,7 @@ mongoose.connect('mongodb://localhost:27017/yelp-camp', {
   useCreateIndex:true,
   useUnifiedTopology:true
 });
+//DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated
 mongoose.set('useFindAndModify', false);
 
 const db = mongoose.connection;
@@ -22,6 +24,7 @@ db.once("open", () => {
 //set up the app
 const app = express();
 app.set('views', path.join(__dirname, 'views'));
+app.engine('ejs',ejsMate);
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
@@ -60,13 +63,13 @@ app.post('/campgrounds', async (req, res) => {
 //Show individual campground detail
 app.get('/campgrounds/:id', async (req, res) => {
   const camp = await Campground.findById(req.params.id);
-  res.render('campgrounds/show',{camp:camp});
+  res.render('campgrounds/show',{campground:camp});
 });
 
 //Edit a specific campground
 app.get('/campgrounds/:id/edit', async (req, res) => {
   const camp = await await Campground.findById(req.params.id);
-  res.render('campgrounds/edit',{camp:camp});
+  res.render('campgrounds/edit',{campground:camp});
 });
 
 
@@ -121,20 +124,20 @@ app.delete('/campgrounds/:id', async (req, res) => {
 // app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 //
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   next(createError(404));
-// });
-//
-// // error handler
-// app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get('env') === 'development' ? err : {};
-//
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
 //
 module.exports = app;

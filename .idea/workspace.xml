@@ -20,18 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaf16b7c-59ed-421f-927a-1c55eecb7209" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seeds/cities.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeds/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seeds/seedHelpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/campgrounds/edit.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/campgrounds/index.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/campgrounds/new.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/campgrounds/show.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/bin_www.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/nodemon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/layouts/boilerplate.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/partials/footer.ejs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/partials/navbar.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/campground.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/campground.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seeds/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/seeds/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/campgrounds/edit.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/campgrounds/edit.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/campgrounds/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/campgrounds/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/campgrounds/new.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/campgrounds/new.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/campgrounds/show.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/campgrounds/show.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +87,7 @@
       <workItem from="1609870186505" duration="1422000" />
       <workItem from="1609872312064" duration="685000" />
       <workItem from="1609879849023" duration="2326000" />
-      <workItem from="1609887870357" duration="8757000" />
+      <workItem from="1609887870357" duration="16390000" />
     </task>
     <servers />
   </component>
@@ -106,36 +107,36 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="424" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609894076198">
+    <state x="424" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609976599397">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="424" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609894076198" />
+    <state x="424" y="199" key="#com.intellij.execution.impl.EditConfigurationsDialog/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609976599397" />
     <state x="747" y="249" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1609894034264">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="747" y="249" key="#com.intellij.ide.macro.MacrosDialog/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609894034264" />
-    <state width="1899" height="376" key="GridCell.Tab.0.bottom" timestamp="1609899395229">
+    <state width="1899" height="305" key="GridCell.Tab.0.bottom" timestamp="1609989014234">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="376" key="GridCell.Tab.0.bottom/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609899276496" />
+    <state width="1899" height="305" key="GridCell.Tab.0.bottom/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609989014234" />
     <state width="1899" height="376" key="GridCell.Tab.0.bottom/-34.1105.1440.813/0.0.1920.1080@0.0.1920.1080" timestamp="1609899395229" />
     <state width="1899" height="305" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1609887841020" />
-    <state width="1899" height="376" key="GridCell.Tab.0.center" timestamp="1609899395228">
+    <state width="1899" height="305" key="GridCell.Tab.0.center" timestamp="1609989014232">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="376" key="GridCell.Tab.0.center/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609899276495" />
+    <state width="1899" height="305" key="GridCell.Tab.0.center/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609989014232" />
     <state width="1899" height="376" key="GridCell.Tab.0.center/-34.1105.1440.813/0.0.1920.1080@0.0.1920.1080" timestamp="1609899395228" />
     <state width="1899" height="305" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1609887841018" />
-    <state width="1899" height="376" key="GridCell.Tab.0.left" timestamp="1609899395227">
+    <state width="1899" height="305" key="GridCell.Tab.0.left" timestamp="1609989014231">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="376" key="GridCell.Tab.0.left/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609899276494" />
+    <state width="1899" height="305" key="GridCell.Tab.0.left/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609989014231" />
     <state width="1899" height="376" key="GridCell.Tab.0.left/-34.1105.1440.813/0.0.1920.1080@0.0.1920.1080" timestamp="1609899395227" />
     <state width="1899" height="305" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1609887841015" />
-    <state width="1899" height="376" key="GridCell.Tab.0.right" timestamp="1609899395228">
+    <state width="1899" height="305" key="GridCell.Tab.0.right" timestamp="1609989014233">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1899" height="376" key="GridCell.Tab.0.right/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609899276496" />
+    <state width="1899" height="305" key="GridCell.Tab.0.right/-34.1080.1440.900/0.0.1920.1080@0.0.1920.1080" timestamp="1609989014233" />
     <state width="1899" height="376" key="GridCell.Tab.0.right/-34.1105.1440.813/0.0.1920.1080@0.0.1920.1080" timestamp="1609899395228" />
     <state width="1899" height="305" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1609887841018" />
     <state width="1899" height="376" key="GridCell.Tab.1.bottom" timestamp="1609899395231">
@@ -188,15 +189,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app.js</url>
-          <line>55</line>
+          <line>58</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/app.js</url>
-          <line>56</line>
+          <line>59</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/app.js</url>
+          <line>65</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
