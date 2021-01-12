@@ -4,10 +4,13 @@ const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const Joi = require('joi');
+const {campgroundSchema} = require('./schemas');
 const Campground = require('./models/campground');
+const Review = require('./models/review');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressErro');//our own express error handler
 const catchAsync = require('./utils/catchAsync');//our own async error handler
+
 
 //database setup
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
@@ -33,7 +36,20 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
 
+//Useful Method
+const validateCampground = function (req,res,next) {
+    //Apply Joi to validate our schema
 
+    const {error} = campgroundSchema.validate(req.body);
+
+    if (error) {
+        const message = error.details.map(el => el.message).join(',')
+        throw new ExpressError(message, 400)
+    } else {
+        next();
+    }
+
+}
 
 
 //start the webpage writing
@@ -63,27 +79,8 @@ app.get('/campgrounds/new', catchAsync(
 
 //store the new campground into our database and redirect it to the new campground.
 //The reason we set the path as /campgrounds is based on the CRUD rule
-app.post('/campgrounds', catchAsync(
+app.post('/campgrounds', validateCampground, catchAsync(
     async (req, res) => {
-        // //Apply Joi to validate our schema
-        // const campgroundSchema = Joi.object({
-        //     campground: Joi.object({
-        //         title: Joi.string().required(),
-        //         price: Joi.number().required().min(0),
-        //         location: Joi.string().required(),
-        //         description: Joi.string().required()
-        //     }).required()
-        // })
-        // console.log(`Here is the request body ${req.body.campground}`)
-        // const {error} = campgroundSchema.validate(req.body);
-        // console.log(error)
-        // if (error) {
-        //     const message = error.details.map(el => el.message).join(',')
-        //     throw new ExpressError(message, 400)
-        // } else {
-        //     next();
-        // }
-
         const campGround = await new Campground(req.body.campground);
         await campGround.save();
         res.redirect(`/campgrounds/${campGround._id}`);
@@ -95,8 +92,30 @@ app.post('/campgrounds', catchAsync(
 //Show individual campground detail
 app.get('/campgrounds/:id', catchAsync(
     async (req, res) => {
-      const camp = await Campground.findById(req.params.id);
-      res.render('campgrounds/show',{campground:camp});
+      const campground = await Campground.findById(req.params.id).populate('reviews');
+      res.render('campgrounds/show',{campground:campground});
+    })
+);
+
+//Review a campground.
+app.post('/campgrounds/:id/reviews', catchAsync(
+    async (req, res) => {
+        const campground = await Campground.findById(req.params.id);
+        const review = new Review(req.body.review);
+        campground.reviews.push(review);
+        await review.save();
+        await campground.save();
+        res.redirect(`/campgrounds/${campground._id}`)
+    })
+);
+
+//delete the review
+app.delete('/campgrounds/:id/reviews/:reviewID', catchAsync(
+    async (req, res) => {
+        const {id, reviewID} = req.params;
+        await Campground.findByIdAndUpdate(id,{$pull:{reviews: reviewID}});
+        await Review.findByIdAndDelete(reviewID);
+        res.redirect(`/campgrounds/${id}`);
     })
 );
 
@@ -109,12 +128,13 @@ app.get('/campgrounds/:id/edit', catchAsync(
 );
 
 
-app.put('/campgrounds/:id', catchAsync(async (req, res) => {
+app.put('/campgrounds/:id', validateCampground, catchAsync(async (req, res) => {
 
   const {id} = req.params;
   const camp = await Campground.findByIdAndUpdate(id,{...req.body.campground});
   res.redirect(`/campgrounds/${id}`);
 }));
+
 
 //delete a campground
 app.delete('/campgrounds/:id', catchAsync(
