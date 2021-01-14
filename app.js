@@ -3,13 +3,19 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const Joi = require('joi');
-const {campgroundSchema} = require('./schemas');
 const Campground = require('./models/campground');
 const Review = require('./models/review');
 const methodOverride = require('method-override');
 const ExpressError = require('./utils/ExpressErro');//our own express error handler
 const catchAsync = require('./utils/catchAsync');//our own async error handler
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const User = require('./models/users');
+//Session
+const session = require('express-session');
+
 
 
 //database setup
@@ -36,66 +42,64 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
 
-//Useful Method
-const validateCampground = function (req,res,next) {
-    //Apply Joi to validate our schema
 
-    const {error} = campgroundSchema.validate(req.body);
 
-    if (error) {
-        const message = error.details.map(el => el.message).join(',')
-        throw new ExpressError(message, 400)
-    } else {
-        next();
+//Session
+const sessionConfig = {
+    secret: 'whatishuskysecret',
+    resave: false,
+    saveUninitialized:true,
+    cookie:{
+        httpOnly:true,
+        expires: Date.now()+1000*60*60*24*7,
+        maxAge:1000*60*60*24*7
     }
 
 }
+app.use(session(sessionConfig));
+
+app.use(flash());
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//Router use
+
+const campgroundsRouter = require('./routes/campgrounds');
+const reviewsRouter = require('./routes/reviews');
+const usersRouter = require('./routes/users');
+app.use('/',usersRouter);
+app.use('/campgrounds',campgroundsRouter);
+app.use('/campgrounds/:id/reviews',reviewsRouter);
+
+//Static setting
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+
+
+
 
 
 //start the webpage writing
 app.listen(3000,() => {
     console.log('Serving on port 3000')
 });
-//Home pafe
+//Home page
 app.get('/',(req, res) => {
-  res.render('home',{title:'YelpCamp'})
+  res.render('index',{title:'YelpCamp'})
 });
 
-//Show all available campgrounds
-app.get('/campgrounds', catchAsync(
-    async (req, res) => {
-      const campGrounds = await Campground.find({});
-      res.render('campgrounds/index',{campGrounds:campGrounds})
-    })
-);
-
-
-//Show a new campground
-app.get('/campgrounds/new', catchAsync(
-    async (req, res) => {
-      res.render('campgrounds/new')
-    })
-);
-
-//store the new campground into our database and redirect it to the new campground.
-//The reason we set the path as /campgrounds is based on the CRUD rule
-app.post('/campgrounds', validateCampground, catchAsync(
-    async (req, res) => {
-        const campGround = await new Campground(req.body.campground);
-        await campGround.save();
-        res.redirect(`/campgrounds/${campGround._id}`);
-    })
-);
 
 
 
-//Show individual campground detail
-app.get('/campgrounds/:id', catchAsync(
-    async (req, res) => {
-      const campground = await Campground.findById(req.params.id).populate('reviews');
-      res.render('campgrounds/show',{campground:campground});
-    })
-);
 
 //Review a campground.
 app.post('/campgrounds/:id/reviews', catchAsync(
@@ -119,31 +123,6 @@ app.delete('/campgrounds/:id/reviews/:reviewID', catchAsync(
     })
 );
 
-//Edit a specific campground
-app.get('/campgrounds/:id/edit', catchAsync(
-    async (req, res) => {
-      const camp = await Campground.findById(req.params.id);
-      res.render('campgrounds/edit',{campground:camp});
-    })
-);
-
-
-app.put('/campgrounds/:id', validateCampground, catchAsync(async (req, res) => {
-
-  const {id} = req.params;
-  const camp = await Campground.findByIdAndUpdate(id,{...req.body.campground});
-  res.redirect(`/campgrounds/${id}`);
-}));
-
-
-//delete a campground
-app.delete('/campgrounds/:id', catchAsync(
-    async (req, res) => {
-      const {id} = req.params;
-      await Campground.findByIdAndDelete(id);
-      res.redirect(`/campgrounds`);
-    })
-);
 
 
 
@@ -154,35 +133,6 @@ app.delete('/campgrounds/:id', catchAsync(
 
 
 
-
-
-
-
-
-// var createError = require('http-errors');
-// var express = require('express');
-// var path = require('path');
-// var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
-//
-// var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
-//
-// var app = express();
-//
-// // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'ejs');
-//
-// app.use(logger('dev'));
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
-//
-// app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-//
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(new ExpressError('You are out of camp now',404));
