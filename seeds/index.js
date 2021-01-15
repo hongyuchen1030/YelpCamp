@@ -22,6 +22,7 @@ const seedDb = async () => {
     for (let i=0; i<50;i++) {
         const city = rdSample(cities);
         const camp = new Campground({
+            author: '6000c71e8330bc0a508c8313',
             title: `${rdSample(descriptors)} ${rdSample(places)}`,
             image:'https://images.unsplash.com/photo-1504744373149-59d6d64c86f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxfDB8MXxyYW5kb218fHx8fHx8fA&ixlib=rb-1.2.1&q=80&w=1080',
             price: Math.floor(Math.random() * 40),
