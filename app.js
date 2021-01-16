@@ -1,3 +1,10 @@
+
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+
+
 //basic connection here
 const express = require('express');
 const path = require('path');
@@ -13,6 +20,10 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/users');
+const multer  = require('multer')
+
+const {cloudinary,storage} = require('./cloudinary');
+const upload = multer({ storage})
 //Session
 const session = require('express-session');
 
