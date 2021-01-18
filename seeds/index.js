@@ -17,26 +17,29 @@ db.once("open", () => {
     console.log("Database connected");
 })
 
+
+
 const seedDb = async () => {
     await  Campground.deleteMany({});
-    for (let i=0; i<50;i++) {
+    for (let i=0; i<200;i++) {
         const city = rdSample(cities);
         const camp = new Campground({
             author: '6000c71e8330bc0a508c8313',
             title: `${rdSample(descriptors)} ${rdSample(places)}`,
             images: [
                 {
-                    url: 'https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ahfnenvca4tha00h2ubt.png',
-                    filename: 'YelpCamp/ahfnenvca4tha00h2ubt'
+                    url: `https://source.unsplash.com/collection/429524/${i}`,
+                    filename: 'YelpCamp/randomseed1'
                 },
                 {
-                    url: 'https://res.cloudinary.com/douqbebwk/image/upload/v1600060601/YelpCamp/ruyoaxgf72nzpi4y6cdi.png',
-                    filename: 'YelpCamp/ruyoaxgf72nzpi4y6cdi'
+                    url: `https://source.unsplash.com/collection/1114848/${i}`,
+                    filename: 'YelpCamp/randomseed2'
                 }
             ],
             price: Math.floor(Math.random() * 40),
             location:`${city.city},${city.state}`,
-            description:"This is a description abala"
+            description:"This is a description abala",
+            geometry: { type: 'Point', coordinates: [city.longitude,city.latitude] }
 
         })
         await camp.save();
