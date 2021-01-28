@@ -143,7 +143,8 @@ app.use(
                 "https://res.cloudinary.com/hongyu/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
                 "https://images.unsplash.com",
                 "https://source.unsplash.com/",
-                "data:image/webp"
+                "http://www.w3.org/",
+                "data:image/"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
@@ -170,7 +171,8 @@ app.use(cookieParser());
 
 
 //start the webpage writing
-app.listen(3000,() => {
+const port = process.env.PORT || 3000
+app.listen(port,() => {
     console.log('Serving on port 3000')
 });
 //Home page

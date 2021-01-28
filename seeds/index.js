@@ -21,7 +21,7 @@ db.once("open", () => {
 
 const seedDb = async () => {
     await  Campground.deleteMany({});
-    for (let i=0; i<200;i++) {
+    for (let i=0; i<10;i++) {
         const city = rdSample(cities);
         const camp = new Campground({
             author: '6000c71e8330bc0a508c8313',
