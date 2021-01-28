@@ -144,7 +144,8 @@ app.use(
                 "https://images.unsplash.com",
                 "https://source.unsplash.com/",
                 "http://www.w3.org/",
-                "data:image/"
+                "data:image/",
+                "http://"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
