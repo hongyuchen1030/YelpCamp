@@ -30,7 +30,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
 
-const db_url = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const db_url =  'mongodb://localhost:27017/yelp-camp';
     //process.env.DB_URL;
 //'mongodb://localhost:27017/yelp-camp'
 //database setup
