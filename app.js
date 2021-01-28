@@ -122,6 +122,7 @@ const styleSrcUrls = [
 ];
 const connectSrcUrls = [
     "https://api.mapbox.com/",
+    "https://*.tiles.mapbox.com",
     "https://a.tiles.mapbox.com/",
     "https://b.tiles.mapbox.com/",
     "https://events.mapbox.com/",
@@ -144,8 +145,8 @@ app.use(
                 "https://images.unsplash.com",
                 "https://source.unsplash.com/",
                 "http://www.w3.org/",
-                "data:image/",
-                "http://"
+                "blob:",
+                "data:",
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
